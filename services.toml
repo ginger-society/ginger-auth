@@ -1,0 +1,12 @@
+dir = "."
+lang = "Rust"
+spec_url = "/openapi.json"
+
+[services."@ginger-society/IAMService"]
+dev = "http://localhost:8080/iam"
+stage = "https://api-staging.gingersociety.org/iam"
+stage_k8 = "http://iam-service-api-service/iam"
+
+[portals_refs]
+
+[urls]

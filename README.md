@@ -1,0 +1,1 @@
+this is the main CLI for the ginger apps , it can help in registration and login ( token based and username and password based )
