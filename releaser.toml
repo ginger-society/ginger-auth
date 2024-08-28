@@ -11,4 +11,4 @@ output_type = "String"
 variable = "version"
 
 [settings]
-git_url_prefix = "https://github.com/ginger-society/ginger-cli"
+git_url_prefix = "https://github.com/ginger-society/ginger-auth"
