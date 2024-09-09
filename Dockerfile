@@ -24,4 +24,4 @@ WORKDIR /app
 COPY . .
 
 RUN ginger-connector connect stage
-RUN cargo Build
+RUN cargo build
