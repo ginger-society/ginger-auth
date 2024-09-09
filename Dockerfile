@@ -14,10 +14,14 @@ RUN npm install @openapitools/openapi-generator-cli -g
 
 RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/ginger-society/infra-as-code-repo/main/rust-helpers/install-all-clis.sh)"
 
-RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/ginger-society/infra-as-code-repo/main/rust-helpers/install-all-clis.sh)"
-
 ARG GINGER_TOKEN
 ENV GINGER_TOKEN=$GINGER_TOKEN
 RUN ginger-auth token-login $GINGER_TOKEN
+
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
+COPY . .
+
 RUN ginger-connector connect stage
 RUN cargo Build
