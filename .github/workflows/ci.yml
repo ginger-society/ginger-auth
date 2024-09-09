@@ -1,4 +1,3 @@
-name: Build, Push Docker Image, and Restart Deployment
 
 on:
   push:
@@ -22,6 +21,16 @@ jobs:
 
     - name: Update pipeline to running
       run: ginger-connector update-pipeline stage running
+
+    - name: Set up Rust environment
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        profile: minimal
+        override: true
+
+    - name: Build Rust project
+      run: cargo build --release
 
     - name: Update pipeline to running
       run: ginger-connector update-pipeline stage passing
