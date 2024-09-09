@@ -19,7 +19,5 @@ RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/ginger-society/infra
 ARG GINGER_TOKEN
 ENV GINGER_TOKEN=$GINGER_TOKEN
 RUN ginger-auth token-login $GINGER_TOKEN
-RUN ginger-connector update-pipeline stage running
 RUN ginger-connector connect stage
 RUN cargo Build
-RUN ginger-connector update-pipeline stage passing
