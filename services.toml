@@ -1,17 +1,16 @@
+dir = "."
 lang = "Rust"
 organization_id = "ginger-society"
-dir = "."
-spec_url = "/openapi.json"
 
 [services."@ginger-society/MetadataService"]
 dev = "http://localhost:8081/metadata"
-stage_k8 = "http://metadata-service-api-service/metadata"
 stage = "https://api-staging.gingersociety.org/metadata"
+stage_k8 = "http://metadata-service-api-service/metadata"
 
 [services."@ginger-society/IAMService"]
+dev = "http://localhost:8080/iam"
 stage = "https://api-staging.gingersociety.org/iam"
 stage_k8 = "http://iam-service-api-service/iam"
-dev = "http://localhost:8080/iam"
 
 [portals_refs]
 
