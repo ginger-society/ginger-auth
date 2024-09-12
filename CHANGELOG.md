@@ -1,3 +1,7 @@
+## 0.2.0-nightly.0 - 2024-09-12
+chore:
+ - [054d708912](https://github.com/ginger-society/ginger-auth054d7089126755b611e5d66a38fe92c0109d347f) (Ginger Society Admin) chore: version bump to 0.2.0-nightly.0
+	
 ## 0.1.0-nightly.0 - 2024-09-12
 chore:
  - [bd610cbc79](https://github.com/ginger-society/ginger-authbd610cbc793dc008e53e55b9ac696405ea2b0909) (Ginger Society Admin) chore: version bump to 0.1.0-nightly.0
