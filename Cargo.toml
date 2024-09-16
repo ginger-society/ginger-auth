@@ -2,7 +2,7 @@
 description = "Auth cli for ginger"
 edition = "2021"
 name = "ginger-auth"
-version = "0.3.0-nightly.0"
+version = "0.1.0"
 
 [dependencies]
 IAMService = {path = "IAMService_client"}
