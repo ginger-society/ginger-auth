@@ -31,6 +31,7 @@ pub async fn register(iam_config: Configuration) {
                     register_request: RegisterRequest {
                         email: user_id,
                         password,
+                        app_id: "dev-machine".to_string(),
                     },
                 },
             )
