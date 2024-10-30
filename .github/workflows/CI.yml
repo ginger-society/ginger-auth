@@ -1,4 +1,3 @@
-
 on:
   workflow_dispatch:
   push:
@@ -12,19 +11,32 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+    - name: Report failure if checkout fails
+      if: failure()
+      run: ginger-connector update-pipeline stage failed
 
     - name: Install ginger-apps
       run: bash -c "$(curl -fsSL https://raw.githubusercontent.com/ginger-society/infra-as-code-repo/main/rust-helpers/install-pipeline-clis.sh)"
+    - name: Report failure if ginger-apps installation fails
+      if: failure()
+      run: ginger-connector update-pipeline stage failed
 
     - name: Authenticate with ginger-auth
       id: ginger-auth
       run: ginger-auth token-login ${{ secrets.GINGER_TOKEN }}
+    - name: Report failure if authentication fails
+      if: failure()
+      run: ginger-connector update-pipeline stage failed
 
     - name: Update pipeline to running
       run: ginger-connector update-pipeline stage running
 
     - name: Build Docker image
       run: docker build . --build-arg GINGER_TOKEN=${{ secrets.GINGER_TOKEN }}
+    - name: Report failure if Docker build fails
+      if: failure()
+      run: ginger-connector update-pipeline stage failed
 
     - name: Update pipeline to passing
+      if: success()
       run: ginger-connector update-pipeline stage passing
