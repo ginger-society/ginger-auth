@@ -48,7 +48,7 @@ pub async fn login(iam_config: Configuration) {
                     login_request: LoginRequest {
                         email: user_id,
                         password,
-                        client_id: "dev-portal-staging".to_string(),
+                        client_id: Some(Some("dev-machine".to_string())), //TODO: should take a parameter to set to pipeline in case we are using it there
                     },
                 },
             )
