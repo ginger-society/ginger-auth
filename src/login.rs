@@ -55,10 +55,24 @@ pub async fn login(iam_config: Configuration) {
             .await
             {
                 Ok(login_response) => {
-                    let metadata_config =
-                        metadata_get_configuration(Some(login_response.access_token.clone()));
-                    let iam_config =
-                        iam_get_configuration(Some(login_response.access_token.clone()));
+                    let metadata_config = metadata_get_configuration(Some(
+                        login_response
+                            .app_tokens
+                            .clone()
+                            .unwrap()
+                            .unwrap()
+                            .access_token
+                            .clone(),
+                    ));
+                    let iam_config = iam_get_configuration(Some(
+                        login_response
+                            .app_tokens
+                            .clone()
+                            .unwrap()
+                            .unwrap()
+                            .access_token
+                            .clone(),
+                    ));
 
                     match metadata_get_workspaces(&metadata_config).await {
                         Ok(workspaces_response) => {
