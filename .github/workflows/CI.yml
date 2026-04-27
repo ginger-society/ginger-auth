@@ -6,27 +6,19 @@ on:
 
 jobs:
   build-and-push:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
-    - name: Report failure if checkout fails
-      if: failure()
-      run: ginger-connector update-pipeline stage failed
-
+      uses: actions/checkout@v3
+    
     - name: Install ginger-apps
       run: bash -c "$(curl -fsSL https://raw.githubusercontent.com/ginger-society/infra-as-code-repo/main/rust-helpers/install-pipeline-clis.sh)"
-    - name: Report failure if ginger-apps installation fails
-      if: failure()
-      run: ginger-connector update-pipeline stage failed
 
     - name: Authenticate with ginger-auth
       id: ginger-auth
       run: ginger-auth token-login ${{ secrets.GINGER_TOKEN }}
-    - name: Report failure if authentication fails
-      if: failure()
-      run: ginger-connector update-pipeline stage failed
+    
 
     - name: Update pipeline to running
       run: ginger-connector update-pipeline stage running
