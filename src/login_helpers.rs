@@ -1,11 +1,10 @@
 
-
-// ── helper: write a file and set Unix permissions ─────────────────────────────
-
-use std::{fs, io::Write, process::{Command, Stdio}};
-#[cfg(unix)]
-use std::{fs::File, path::PathBuf};
-// ── helper: write a file and set Unix permissions ─────────────────────────────
+use std::{
+    fs::{self, File},
+    io::Write,
+    path::PathBuf,
+    process::{Command, Stdio},
+};
 
 #[cfg(unix)]
 pub fn write_ssh_file(path: &PathBuf, content: &str, mode: u32) {
