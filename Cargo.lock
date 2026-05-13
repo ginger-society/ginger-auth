@@ -484,6 +484,7 @@ version = "0.1.0"
 dependencies = [
  "IAMService",
  "MetadataService",
+ "base64",
  "clap",
  "colored",
  "dirs",

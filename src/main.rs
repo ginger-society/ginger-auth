@@ -10,6 +10,7 @@ mod login;
 mod register;
 mod token_login;
 mod workspace;
+mod login_helpers;
 /// Command line interface for managing device session
 #[derive(Parser)]
 #[clap(name = "CLI")]
